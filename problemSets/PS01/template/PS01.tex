@@ -81,25 +81,16 @@
 A school counselor was curious about the average of IQ of the students in her school and took a random sample of 25 students' IQ scores. The following is the data set:\\
 \vspace{.5cm}
 
+\lstinputlisting[language=R, firstline=36, lastline=36]{PS01.R}  
 
 \vspace{1cm}
 
 \begin{enumerate}
 	\item Find a 90\% confidence interval for the average student IQ in the school.\\
-	  \lstinputlisting[language=R, firstline=38, lastline=46]{PS01.R}
-	  \begin{itemize}
-		\item \textbf{Result}:
-		\item  [[1]] 94.98915      Inf\\
-		attr(,"conf.level")
-		\item [[1]] 0.9
-       \end{itemize}
+	
 	\item Next, the school counselor was curious  whether  the average student IQ in her school is higher than the average IQ score (100) among all the schools in the country.\\ 
-	\noindent Using the same sample, conduct the appropriate hypothesis test with$\alpha=0.05$.
-		\lstinputlisting[language=R, firstline=48, lastline=58]{PS01.R} 
-		\begin{itemize}
-	      \item \textbf{Result:}
-		  \item  At a significance level of 0.05, we fail to reject the null hypothesis. There is not enough evidence to conclude that school students' average IQ is higher than the national average.
-	\end{itemize}
+	
+	\noindent Using the same sample, conduct the appropriate hypothesis test with $\alpha=0.05$.
 \end{enumerate}
 
 \newpage
@@ -129,41 +120,12 @@ A school counselor was curious about the average of IQ of the students in her sc
 \item
 Please plot the relationships among \emph{Y}, \emph{X1}, \emph{X2}, and \emph{X3}? What are the correlations among them (you just need to describe the graph and the relationships among them)?
 \vspace{.5cm}
-\lstinputlisting[language=R, firstline=66, lastline=70]{PS01.R} 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{1}
-\end{figure}
-\lstinputlisting[language=R, firstline=72, lastline=74]{PS01.R} 
-		\begin{itemize}
-	\item \textbf{Result:}
-	\item  At a significance level of 0.05, we fail to reject the null hypothesis. There is not enough evidence to conclude that school students' average IQ is higher than the national average.\\
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.8\textwidth]{2}
-	\end{figure}
-\end{itemize}
 \item
 Please plot the relationship between \emph{Y} and \emph{Region}? On average, which region has the highest per capita expenditure on housing assistance?
 \vspace{.5cm}
-\lstinputlisting[language=R, firstline=74, lastline=78]{PS01.R} 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{3}
-\end{figure}
 \item
 Please plot the relationship between \emph{Y} and \emph{X1}? Describe this graph and the relationship. Reproduce the above graph including one more variable \emph{Region} and display different regions with different types of symbols and colors.
-\vspace{.5cm}
-\lstinputlisting[language=R, firstline=81, lastline=86]{PS01.R} 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{4}
-\end{figure}
-\begin{itemize}
-	\item\textbf{ Result:}
-	\item The x-axis represents per capita personal income (X1) in the state.
-	\item The y-axis represents per capita expenditure on shelters/housing assistance (Y) in the state.
-	\item Different colors and shapes are used to differentiate between regions (1 = Northeast, 2 = North Central, 3 = South, 4 = West). In the context of Region 3 (South), with its lower per capita income,
 \end{itemize}
-\end{itemize}
+
+
 \end{document}
