@@ -1,0 +1,213 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{graphicx,textcomp}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage[reqno]{amsmath}
+\usepackage{amsthm}
+\usepackage{fancyvrb}
+\usepackage{amssymb,enumerate}
+\usepackage[all]{xy}
+\usepackage{endnotes}
+\usepackage{lscape}
+\newtheorem{com}{Comment}
+\usepackage{float}
+\usepackage{hyperref}
+\newtheorem{lem} {Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{cor}{Corollary}
+\newtheorem{obs}{Observation}
+\usepackage[compact]{titlesec}
+\usepackage{dcolumn}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{multirow}
+\usepackage{xcolor}
+\newcolumntype{.}{D{.}{.}{-1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+\definecolor{light-gray}{gray}{0.65}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstset{style=mystyle}
+\newcommand{\Sref}[1]{Section~\ref{#1}}
+\newtheorem{hyp}{Hypothesis}
+
+\title{Problem Set 3}
+\date{Zhuo Zhang/23346227}
+\author{Applied Stats/Quant Methods 1}
+
+
+\begin{document}
+	\maketitle
+	\section*{Instructions}
+	\begin{itemize}
+		\item Please show your work! You may lose points by simply writing in the answer. If the problem requires you to execute commands in \texttt{R}, please include the code you used to get your answers. Please also include the \texttt{.R} file that contains your code. If you are not sure if work needs to be shown for a particular problem, please ask.
+	\item Your homework should be submitted electronically on GitHub.
+	\item This problem set is due before 23:59 on Sunday November 19, 2023. No late assignments will be accepted.
+
+	\end{itemize}
+
+		\vspace{.25cm}
+	
+\noindent In this problem set, you will run several regressions and create an add variable plot (see the lecture slides) in \texttt{R} using the \texttt{incumbents\_subset.csv} dataset. Include all of your code.
+
+	\vspace{.5cm}
+\section*{Question 1}
+\vspace{.25cm}
+\noindent We are interested in knowing how the difference in campaign spending between incumbent and challenger affects the incumbent's vote share. 
+	\begin{enumerate}
+		\item Run a regression where the outcome variable is \texttt{voteshare} and the explanatory variable is \texttt{difflog}.	
+			\vspace{.25cm}
+			\lstinputlisting[language=R, firstline=37, lastline=41]{PS3_zhuo_zhang.R} 
+			\textbf{Result}:\\
+			\includegraphics[width=0.8\textwidth]{plot_1a.png}
+			\vspace{.5cm}
+		\item Make a scatterplot of the two variables and add the regression line. 	
+			\vspace{.25cm}
+			\lstinputlisting[language=R, firstline=43, lastline=49]{PS3_zhuo_zhang.R} 
+			\textbf{Result}:\\
+			\includegraphics[width=.85\textwidth]{plot_1b.pdf} 
+			\vspace{.25cm}
+		\item Save the residuals of the model in a separate object.	
+			\vspace{.25cm}
+			\lstinputlisting[language=R, firstline=51, lastline=53]{PS3_zhuo_zhang.R} 
+			\vspace{.25cm}
+		\item Write the prediction equation.
+			\vspace{.25cm}
+			\lstinputlisting[language=R, firstline=55, lastline=81]{PS3_zhuo_zhang.R} 
+			\textbf{Result}:\\
+			prediction equation: voteshare = 0.58 + 0.04 * difflog\\
+			ratio (beta-1): 0.04166632 \\
+			intercept (beta-0): 0.5790307\\
+			prediction equation: voteshare = 0.58 + 0.04 * difflog\\
+			\vspace{.25cm}
+	\end{enumerate}
+	
+\newpage
+
+\section*{Question 2}
+\noindent We are interested in knowing how the difference between incumbent and challenger's spending and the vote share of the presidential candidate of the incumbent's party are related.	\vspace{.25cm}
+	\begin{enumerate}
+		\item Run a regression where the outcome variable is \texttt{presvote} and the explanatory variable is \texttt{difflog}.	
+			\vspace{.25cm}
+			\lstinputlisting[language=R, firstline=84, lastline=88]{PS3_zhuo_zhang.R} 
+			\textbf{Result}:\\
+			\includegraphics[width=0.8\textwidth]{plot_2a.png}
+			\vspace{.25cm}
+		\item Make a scatterplot of the two variables and add the regression line. 	
+			\vspace{.25cm}
+			\lstinputlisting[language=R, firstline=90, lastline=96]{PS3_zhuo_zhang.R} 
+			\textbf{Result}:\\
+			\includegraphics[width=.85\textwidth]{plot_2b.pdf} 
+			\vspace{.25cm}
+		\item Save the residuals of the model in a separate object.	
+			\lstinputlisting[language=R, firstline=98, lastline=99]{PS3_zhuo_zhang.R} 
+		\item Write the prediction equation.
+			\lstinputlisting[language=R, firstline=101, lastline=107]{PS3_zhuo_zhang.R} 
+			\textbf{Result}:\\
+			prediction equation: presvote = 0.51 + 0.02 * difflog
+
+	\end{enumerate}
+	
+	\newpage	
+\section*{Question 3}
+
+\noindent We are interested in knowing how the vote share of the presidential candidate of the incumbent's party is associated with the incumbent's electoral success.
+	\vspace{.25cm}
+	\begin{enumerate}
+		\item Run a regression where the outcome variable is \texttt{voteshare} and the explanatory variable is \texttt{presvote}.
+			\vspace{.25cm}
+			\lstinputlisting[language=R, firstline=111, lastline=115]{PS3_zhuo_zhang.R} 
+			\textbf{Result}:\\
+			\includegraphics[width=0.8\textwidth]{plot_3a.png}
+			\vspace{.25cm}
+		\item Make a scatterplot of the two variables and add the regression line. 
+			\vspace{.25cm}
+			\lstinputlisting[language=R, firstline=117, lastline=123]{PS3_zhuo_zhang.R} 
+			\textbf{Result}:\\
+			\includegraphics[width=.85\textwidth]{plot_3b.pdf} 
+			\vspace{.25cm}
+		\item Write the prediction equation.
+			\vspace{.25cm}
+			\lstinputlisting[language=R, firstline=125, lastline=131]{PS3_zhuo_zhang.R} 
+			\textbf{Result}:\\
+			prediction equation: voteshare = 0.44 + 0.39 * presvote
+	\end{enumerate}
+	
+
+\newpage	
+\section*{Question 4}
+\noindent The residuals from part (a) tell us how much of the variation in \texttt{voteshare} is $not$ explained by the difference in spending between incumbent and challenger. The residuals in part (b) tell us how much of the variation in \texttt{presvote} is $not$ explained by the difference in spending between incumbent and challenger in the district.
+	\begin{enumerate}
+		\item Run a regression where the outcome variable is the residuals from Question 1 and the explanatory variable is the residuals from Question 2.	
+			\vspace{.25cm}
+			\lstinputlisting[language=R, firstline=135, lastline=145]{PS3_zhuo_zhang.R} 
+			\textbf{Result}:\\
+			\includegraphics[width=0.8\textwidth]{plot_4a.png}
+			\vspace{.25cm}
+		\item Make a scatterplot of the two residuals and add the regression line. 	
+			\vspace{.25cm}
+			\lstinputlisting[language=R, firstline=147, lastline=153]{PS3_zhuo_zhang.R} 
+			\textbf{Result}:\\
+			\includegraphics[width=.85\textwidth]{plot_4b.pdf} 
+			\vspace{.25cm}
+		\item Write the prediction equation.
+			\vspace{.25cm}
+			\lstinputlisting[language=R, firstline=155, lastline=161]{PS3_zhuo_zhang.R} 
+			\textbf{Result}:\\
+			Prediction equation for residuals: residuals2 = 0 + 0.51 * residuals1
+	\end{enumerate}
+	
+	\newpage	
+
+\section*{Question 5}
+\noindent What if the incumbent's vote share is affected by both the president's popularity and the difference in spending between incumbent and challenger? 
+	\begin{enumerate}
+		\item Run a regression where the outcome variable is the incumbent's \texttt{voteshare} and the explanatory variables are \texttt{difflog} and \texttt{presvote}.	
+			\vspace{.25cm}
+			\lstinputlisting[language=R, firstline=165, lastline=169]{PS3_zhuo_zhang.R} 
+			\textbf{Result}:\\
+			\includegraphics[width=0.8\textwidth]{plot_5a.png}
+			\vspace{.25cm}
+		\item Write the prediction equation.	
+			\vspace{.25cm}
+			\lstinputlisting[language=R, firstline=171, lastline=178]{PS3_zhuo_zhang.R} 
+			\textbf{Result}:\\
+			Prediction equation for multiple regression: voteshare = 0.45 + 0.04 * difflog + 0.26 * presvote
+		\item What is it in this output that is identical to the output in Question 4? Why do you think this is the case?\\
+			\textbf{Result}:\\
+			Both questions 4 and 5 see the incumbent's share of the vote affected by and the difference in spending between the incumbent and the challenger. And there is a linear relationship, with more spending leading to a higher vote share. But as can also be seen in question 5, the incumbent's share of the vote is affected by both presidential popularity and the difference in spending between the incumbent and the challenger.
+	\end{enumerate}
+
+
+
+
+\end{document}
